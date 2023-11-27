@@ -1,8 +1,12 @@
 const express = require('express');
 const users = require('./MOCK_DATA.json')
+const fs = require('fs')
 
 const app = express();
 const PORT = 8000;
+
+// middleware -- plugin
+app.use(express.urlencoded({extended: false}))
 
 
 // routes
@@ -28,7 +32,12 @@ app.get('/api/users', (req, res) => {
 // POST /api/users - create a new user
 app.post('/api/users', (req,res) => {
     // TODO: create new user
-    return res.json({status:'pending'})
+    const body = req.body
+    // console.log(body);
+    users.push({...body, id : users.length + 1})
+    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data) => {
+        return res.json({status:`success`, id: users.length})
+    })
 })
 
 
@@ -58,17 +67,17 @@ app.delete('/api/users:id', (req,res) => {
 
 // all get,patch,delete in one place
 app
-    .router('/api/users:id')
-    .get('/api/users/:id', (req, res) => {
+    .route('/api/users/:id')
+    .get((req, res) => {
         const id = Number(req.params.id)
         const user = users.find((user) => user.id === id)
         return res.json(user)
     })
-    .patch('/api/users:id', (req,res) => {
+    .patch((req,res) => {
         // TODO: edit the user with id 
         return res.json({status:'pending'})
     })
-    .delete('/api/users:id', (req,res) => {
+    .delete((req,res) => {
         // TODO: delete the user with id 
         return res.json({status:'pending'})
     })
