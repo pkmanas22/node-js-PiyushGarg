@@ -2,7 +2,12 @@ const http = require("http");
 const fs = require('fs');
 const url = require('url')
 
-const myServer = http.createServer((req, res) => {
+// express.js
+const express = require('express')
+
+
+// simple node js
+function myHandler(req,res) {
     if (req.url === '/favicon.ico') return res.end()
     const log = `${Date.now()}: ${req.url} New request received\n`;
 
@@ -27,6 +32,38 @@ const myServer = http.createServer((req, res) => {
                 break;
         }
     })
-});
+}
 
-myServer.listen(8000, () => console.log('server started...'))
+
+
+// express.js framework
+const app = express();
+app.get('/',(req,res) => {
+    return res.send("Hello from home page")
+})
+
+app.get('/about',(req,res) => {
+    return res.send(`Hello ${req.query.name}`)
+})
+
+app.listen(8000, ()=> {
+    console.log("Server started with express");
+})
+
+/*const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})*/
+
+
+// server
+// const myServer = http.createServer(app);
+
+// myServer.listen(8000, () => console.log('server started...'))
