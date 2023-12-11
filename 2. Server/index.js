@@ -1,54 +1,56 @@
-const http = require("http");
-const fs = require('fs');
-const url = require('url')
+// Importing required modules for the application
+const http = require("http"); // HTTP module for creating an HTTP server
+const fs = require('fs'); // File system module for file operations
+const url = require('url'); // URL module for parsing URL strings
 
-// express.js
-const express = require('express')
+// Importing Express.js framework
+const express = require('express');
 
-
-// simple node js
-function myHandler(req,res) {
-    if (req.url === '/favicon.ico') return res.end()
+// Simple Node.js server using the http module
+function myHandler(req, res) {
+    if (req.url === '/favicon.ico') return res.end();
     const log = `${Date.now()}: ${req.url} New request received\n`;
 
-    const myUrl = url.parse(req.url,true)
+    const myUrl = url.parse(req.url, true);
     console.log(myUrl);
 
     fs.appendFile("log.txt", log, (err, data) => {
         switch (myUrl.pathname) {
             case '/':
-                res.end("Home page")
+                res.end("Home page");
                 break;
             case '/about':
                 // res.end("About section")
-                const uname = myUrl.query.name
-                res.end(`Hi! ${uname}`)
+                const uname = myUrl.query.name;
+                res.end(`Hi! ${uname}`);
                 break;
             case '/contact':
-                res.end("Contact page")
+                res.end("Contact page");
                 break;
             default:
-                res.end("404 page not found")
+                res.end("404 page not found");
                 break;
         }
-    })
+    });
 }
 
-
-
-// express.js framework
+// Express.js framework implementation
 const app = express();
-app.get('/',(req,res) => {
-    return res.send("Hello from home page")
-})
 
-app.get('/about',(req,res) => {
-    return res.send(`Hello ${req.query.name}`)
-})
+// Handling GET request for the home page
+app.get('/', (req, res) => {
+    return res.send("Hello from home page");
+});
 
-app.listen(8000, ()=> {
-    console.log("Server started with express");
-})
+// Handling GET request for the about page
+app.get('/about', (req, res) => {
+    return res.send(`Hello ${req.query.name}`);
+});
+
+// Starting the Express.js server on port 8000
+app.listen(8000, () => {
+    console.log("Server started with Express.js");
+});
 
 /*const express = require('express')
 const app = express()
@@ -62,8 +64,9 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })*/
 
-
-// server
-// const myServer = http.createServer(app);
-
-// myServer.listen(8000, () => console.log('server started...'))
+/*
+// Uncomment the code below if you want to run a simple Node.js server using the http module
+// Creating an HTTP server and listening on port 8000
+const myServer = http.createServer(myHandler);
+myServer.listen(8000, () => console.log('Server started...'));
+*/
