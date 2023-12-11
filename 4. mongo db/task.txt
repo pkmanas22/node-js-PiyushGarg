@@ -1,0 +1,25 @@
+mongosh command
+1. test> show dbs
+    admin          40.00 KiB
+    config         72.00 KiB
+    local          72.00 KiB
+    testAppPiyush  12.00 KiB
+2. test> use testAppPiyush
+    switched to db testAppPiyush
+3. testAppPiyush> show collections
+    users
+4. testAppPiyush> db.users.find({})
+
+testAppPiyush>
+
+****************************************************
+
+1. require mongoose
+2. connect the mongoose
+3. build schema
+4. build model
+
+
+schema - Define the structure
+    schema - Model
+    Using model we do CRUD operation
