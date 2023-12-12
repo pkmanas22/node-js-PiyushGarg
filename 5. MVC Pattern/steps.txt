@@ -1,0 +1,1 @@
+1. create folders : models, controllers, routes, views
