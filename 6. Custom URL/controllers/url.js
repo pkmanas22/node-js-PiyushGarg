@@ -6,7 +6,7 @@ async function handleGenerateNewShortURL(req, res) {
     const body = req.body;
     console.log(body);
     if (!body.url) {
-        return res.status(404).json({ error: "URL is required" })
+        return res.status(400).json({ error: "URL is required" })
     }
     const shortId = shortid.generate();
 
@@ -16,7 +16,8 @@ async function handleGenerateNewShortURL(req, res) {
         visitHistory: []
     })
 
-    return res.json({ id: shortId })
+    // return res.json({ id: shortId })
+    return res.render('home', { id: shortId })
 }
 
 async function handleGetAnalytics(req, res) {

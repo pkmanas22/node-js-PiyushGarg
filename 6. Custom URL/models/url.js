@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 
 // Define schema
-const urlSchema = mongoose.Schema({
+const urlSchema = new mongoose.Schema({
     shortId: {
         type: String,
         required: true,
@@ -25,8 +25,8 @@ const urlSchema = mongoose.Schema({
 
 
 // Create model
-const url = mongoose.model('url', urlSchema);
+const URL = mongoose.model('url', urlSchema);
 
 
 // Export the model
-module.exports = url;
+module.exports = URL;
