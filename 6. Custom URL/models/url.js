@@ -18,6 +18,10 @@ const urlSchema = new mongoose.Schema({
             timestamp: { type: Number }
         }
     ],
+    createdBY: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users",
+    },
 }, {
     // Add timestamps for createdAt and updatedAt
     timestamps: true
