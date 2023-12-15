@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+    <!-- Setting the character set and viewport for responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 
+    <!-- Adding a simple style for the body -->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,37 +16,50 @@
 </head>
 
 <body>
-    <h1>URL Shortner</h1>
+    <!-- Heading for the URL Shortener -->
+    <h1>URL Shortener</h1>
 
+    <!-- Form for submitting a new URL to be shortened -->
     <div class="form">
         <form action="/url" method="POST">
+            <!-- Label and input for entering the original URL -->
             <label for="redirectUrl">Enter your original URL: </label>
             <input type="text" id="redirectUrl" name="url" placeholder="https://example.com" required>
+            <!-- Button to submit the form and generate a shortened URL -->
             <button type="submit">Generate URL</button>
         </form>
     </div>
 
+    <!-- Displaying the generated URL if available -->
     <div class="output">
         <% if (locals.id) { %>
             <p>URL generated: <a href="http://localhost:8001/url/<%= id %>" target="_blank">http://localhost:8001/url/<%= id %></a></p>
         <% } %>
     </div>
 
+    <!-- Table to display the list of shortened URLs with their details -->
     <div class="table">
         <% if (locals.urls) { %>
             <table>
+                <!-- Table header with column names -->
                 <thead>
                     <th>S. No.</th>
                     <th>Short URL</th>
                     <th>Original URL</th>
                     <th>Total Clicks</th>
                 </thead>
+                <!-- Table body with data rows -->
                 <tbody>
+                    <!-- Looping through the URLs to populate the table rows -->
                     <% urls.forEach((url, index) => { %>
                         <tr>
+                            <!-- Displaying serial number -->
                             <td><%= index + 1 %></td>
+                            <!-- Displaying the short URL as a link -->
                             <td><a href="http://localhost:8001/url/<%= url.shortId %>" target="_blank">http://localhost:8001/url/<%= url.shortId %></a></td>
+                            <!-- Displaying the original URL -->
                             <td><%= url.redirectUrl %></td>
+                            <!-- Displaying the total number of clicks on the URL -->
                             <td><%= url.visitHistory.length %></td>
                         </tr>
                     <% }) %>    

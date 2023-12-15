@@ -1,0 +1,95 @@
+# Step-by-Step Guide for Provided Code Snippets
+
+## 1. Express Server (index.js)
+   - Purpose: Initializes an Express server, connects to MongoDB, and configures routes.
+   - Steps to Follow:
+      1. Install necessary packages: `express`, `ejs`, `mongoose`, `cookie-parser`.
+      2. Set up your MongoDB database.
+      3. Create an `index.js` file and paste the provided code.
+      4. Run `npm install` to install dependencies.
+      5. Run your server: `node index.js`.
+      6. Access the application at `http://localhost:8001`.
+
+## 2. MongoDB Connection (connect.js)
+   - Purpose: Provides a function to connect to a MongoDB database.
+   - Steps to Follow:
+      1. Ensure MongoDB is installed and running.
+      2. Create a `connect.js` file.
+      3. Paste the provided code into `connect.js`.
+      4. Use the `connectToMongoDB` function to connect in your main file.
+
+## 3. Home Page Template (home.ejs)
+   - Purpose: HTML template for displaying short URLs and analytics.
+   - Steps to Follow:
+      1. Create a `views` folder in your project.
+      2. Inside `views`, create a file named `home.ejs`.
+      3. Paste the provided HTML code into `home.ejs`.
+
+## 4. Login Page Template (login.ejs)
+   - Purpose: HTML template for the login page.
+   - Steps to Follow:
+      1. Inside the `views` folder, create a file named `login.ejs`.
+      2. Paste the provided HTML code into `login.ejs`.
+
+## 5. Signup Page Template (signup.ejs)
+   - Purpose: HTML template for the signup page.
+   - Steps to Follow:
+      1. Inside the `views` folder, create a file named `signup.ejs`.
+      2. Paste the provided HTML code into `signup.ejs`.
+
+## 6. JWT Authentication Service (auth.js)
+   - Purpose: Manages user authentication using JSON Web Tokens (JWT).
+   - Steps to Follow:
+      1. Create an `auth.js` file.
+      2. Paste the provided code into `auth.js`.
+      3. Use the functions in your authentication flow.
+
+## 7. URL Route (url.js)
+   - Purpose: Defines routes for URL-related functionality.
+   - Steps to Follow:
+      1. Create a `routes` folder in your project.
+      2. Inside `routes`, create a file named `url.js`.
+      3. Paste the provided code into `url.js`.
+
+## 8. User Route (user.js)
+   - Purpose: Defines routes for user-related functionality.
+   - Steps to Follow:
+      1. Inside the `routes` folder, create a file named `user.js`.
+      2. Paste the provided code into `user.js`.
+
+## 9. User Model (user.js)
+   - Purpose: Defines the Mongoose schema for the User model.
+   - Steps to Follow:
+      1. Inside the `models` folder, create a file named `user.js`.
+      2. Paste the provided code into `user.js`.
+
+## 10. URL Model (url.js)
+    - Purpose: Defines the Mongoose schema for the URL model.
+    - Steps to Follow:
+      1. Inside the `models` folder, create a file named `url.js`.
+      2. Paste the provided code into `url.js`.
+
+## 11. Authentication Middleware (authMiddleware.js)
+   - Purpose: Provides middleware for checking user authentication and authorization.
+   - Steps to Follow:
+      1. Inside the `middlewares` folder, create a file named `authMiddleware.js`.
+      2. Paste the provided code into `authMiddleware.js`.
+
+## 12. URL Controller (urlController.js)
+   - Purpose: Controller for handling short URL generation and analytics.
+   - Steps to Follow:
+      1. Inside the `controllers` folder, create a file named `urlController.js`.
+      2. Paste the provided code into `urlController.js`.
+
+## 13. User Controller (userController.js)
+   - Purpose: Controller for user signup and login.
+   - Steps to Follow:
+      1. Inside the `controllers` folder, create a file named `userController.js`.
+      2. Paste the provided code into `userController.js`.
+
+## 14. User Authentication Middleware (userAuthMiddleware.js)
+   - Purpose: Middleware for checking user authentication using JWT.
+   - Steps to Follow:
+      1. Inside the `middlewares` folder, create a file named `userAuthMiddleware.js`.
+      2. Paste the provided code into `userAuthMiddleware.js`.
+      3. Use the middleware in your routes for authentication.

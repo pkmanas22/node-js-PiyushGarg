@@ -1,0 +1,52 @@
+1. Express Server Initialization (index.js):
+   - Sets up an Express server with necessary middleware.
+   - Connects to MongoDB using Mongoose.
+   - Configures EJS as the view engine.
+   - Defines routes for URL-related, static, and user functionality.
+   - Starts the server on port 8001.
+
+2. MongoDB Connection (connect.js):
+   - Provides a function to connect to a MongoDB database.
+
+3. Home Page Template (home.ejs):
+   - HTML template for the home page displaying short URLs and analytics.
+
+4. Login Page Template (login.ejs):
+   - HTML template for the login page.
+
+5. Signup Page Template (signup.ejs):
+   - HTML template for the signup page.
+
+6. JWT Authentication Service (auth.js):
+   - Manages user authentication using JSON Web Tokens (JWT).
+   - Provides functions to set and get user information from JWT.
+
+7. URL Route (url.js):
+   - Defines routes for handling URL-related functionality.
+   - Exposes endpoints for generating new short URLs and getting analytics.
+
+8. User Route (user.js):
+   - Defines routes for user-related functionality.
+   - Exposes endpoints for user signup and login.
+
+9. User Model (user.js):
+   - Defines the Mongoose schema for the User model.
+   - Includes fields for name, email, role, and password.
+
+10. URL Model (url.js):
+    - Defines the Mongoose schema for the URL model.
+    - Includes fields for shortId, redirectUrl, visitHistory, and createdBY.
+
+11. Authentication Middleware (authMiddleware.js):
+    - Provides middleware for checking user authentication and authorization.
+    - Uses JWT for authentication and restricts access based on user roles.
+
+12. URL Controller (urlController.js):
+    - Handles the generation of new short URLs and retrieval of analytics.
+
+13. User Controller (userController.js):
+    - Handles user signup and login.
+
+14. User Authentication Middleware (userAuthMiddleware.js):
+    - Middleware for checking user authentication using JWT.
+    - Sets the authenticated user on the request object.
