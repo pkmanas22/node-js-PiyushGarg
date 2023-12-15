@@ -20,26 +20,29 @@ async function handleUserLogin(req, res) {
 
         const user = await User.findOne({ email, password })
 
-        console.log("User query:", { email, password });
-        console.log("Database response:", user);
+        // console.log("User query:", { email, password });
+        // console.log("Database response:", user);
 
         if (!user) {
             console.log("User not found");
             return res.render("login", { error: "Invalid Username or password" });
         }
+        
+        const token = setUser(user);
+        // console.log(token);
+
         /*const sessionId = uuidv4()*/
 
-        // res.cookie("uid", token)
+        res.cookie("token", token)
+
         /*
         With specific domain
         res.cookie("uid", token, {
             domain: ".piyushgarg.dev"  // www.piyushgarg.dev (or) blog.piyushgarg.dev, etc...
         })*/
-        // return res.redirect("/")
+        return res.redirect("/")
 
-        const token = setUser(user);
-        // console.log(token);
-        return res.json({ token });
+        // return res.json({ token });
     } catch (error) {
         console.error("Error during login:", error);
         return res.status(500).json({ error: "Internal Server Error" });
