@@ -1,0 +1,5 @@
+https://discord.com/developers/applications
+
+https://discord.js.org/docs/packages/discord.js/main
+
+https://discord.com/developers/docs/topics/gateway#list-of-intents
