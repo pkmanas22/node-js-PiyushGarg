@@ -6,8 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Uploads || pkmanas</title>
  
-    <!-- CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS  -->
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        form{
+            margin-top: 100px;
+            width: fit-content;
+            height: 10vh;
+            margin: auto;
+        }
+        input, button{
+            font-size: 20px;
+            color: #0e1eb1;
+            font-weight: 700;
+        }
+        .div-image{
+            width: fit-content;
+            height: 90vh;
+            margin: auto;
+        }
+    </style>
 </head>
  
 <body>
@@ -15,6 +36,15 @@
         <input type="file" name="profileImage" id="profileImage">
         <button type="submit">Upload</button>
     </form>
+
+    <div class="div-image">
+        <% if (profileImage) { %>
+            <!-- <p><%= profileImage %></p> -->
+            <img src="<%= profileImage %>" alt="Uploaded Image">
+        <% } else { %>
+            <p>No image uploaded yet.</p>
+        <% } %>
+    </div>
 </body>
  
 </html>
