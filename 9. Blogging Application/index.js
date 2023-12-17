@@ -33,6 +33,7 @@ app.use(express.static(path.resolve('./public')))
 // Rendering the 'home' template with URL data
 app.get('/', async (req, res) => {
     const allBlogs = await Blog.find({})
+    // console.log("User:", req.user);
     return res.render('home', {
         user: req.user,
         blogs: allBlogs,

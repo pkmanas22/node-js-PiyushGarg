@@ -1,7 +1,9 @@
 const { Router } = require('express');
-const Blog = require('../models/blog')
 const multer = require('multer')
 const path = require('path');
+
+const Blog = require('../models/blog')
+const Comment = require('../models/comment')
 
 const blogRouter = Router();
 
@@ -25,10 +27,12 @@ blogRouter.get("/add-blog", (req, res) => {
 
 blogRouter.get("/:id", async (req, res) => {
     const blog = await Blog.findById(req.params.id).populate("createdBy")
+    const comments = await Comment.find({ blogId: req.params.id }).populate("createdBy")
     // console.log(blog);
     return res.render('blog', {
         user: req.user,
         blog,
+        comments,
     })
 })
 
@@ -43,8 +47,21 @@ blogRouter.post("/add-blog",upload.single("coverImage"), async (req, res) => {
         createdBy: req.user._id,
         coverImageUrl: `/uploads/${req.file.filename}`
     })
-    console.log(blog._id);
+    // console.log(blog._id);
     return res.redirect(`/blog/${blog._id}`)
+});
+
+
+blogRouter.post("/comment/:blogId", async (req, res) => {
+    const { content } = req.body;
+
+    await Comment.create({
+        content,
+        createdBy: req.user._id,
+        blogId: req.params.blogId,
+    })
+    
+    return res.redirect(`/blog/${req.params.blogId}`)
 });
 
 module.exports = blogRouter;
