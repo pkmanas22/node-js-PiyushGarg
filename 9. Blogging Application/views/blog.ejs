@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+        <title>
+            <%= blog.title %> || Blogify-pkmanas
+        </title>
+</head>
+
+<body>
+    <%- include('./partials/navbar') %> <!--  nav bar -->
+
+        <div class="container mt-4">
+            <h1>
+                <%= blog.title %>
+            </h1>
+
+            <div class="publication-details ">
+                <div class="row">
+                    <div class="col-12">
+                        <hr class="my-2"> <!-- Straight line content -->
+                    </div>
+                </div>
+                <div class="d-flex mb-1 justify-content-center align-items-center">
+                    <div class="p-2">
+                        <img src="<%= blog.createdBy.profileImageUrl %>" alt="" width="50px">
+                    </div>
+                    <div class="p-2">
+                        <h3>
+                            <%= blog.createdBy.fullName %>
+                        </h3>
+                    </div>
+                    <div class="ms-auto p-2">
+                        <h5>Published on: <%= blog.createdAt %>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <hr class="my-2"> <!-- Straight line content -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-image">
+                <img src="<%= blog.coverImageUrl %>" alt="cover image" width=700px>
+            </div>
+
+            <div class="body">
+                <pre>
+                    <%= blog.body%>
+                </pre>
+            </div>
+        </div>
+
+        <%- include("./partials/script") %>
+</body>
+
+</html>
