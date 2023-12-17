@@ -1,6 +1,7 @@
 // Import necessary modules
 const mongoose = require("mongoose");
 const { createHash, randomBytes} = require('crypto');
+const { createTokenForUser } = require("../services/authentication");
 
 // Define schema
 const UserSchema = new mongoose.Schema({
@@ -50,7 +51,7 @@ UserSchema.pre("save", function (next) {
     next()
 })
 
-UserSchema.static('matchPassword', async function (email, password) {
+UserSchema.static('matchPasswordAndGenerateToken', async function (email, password) {
     const user = await this.findOne({ email })
     if(!user) throw new Error("User not found")
 
@@ -65,7 +66,9 @@ UserSchema.static('matchPassword', async function (email, password) {
         throw new Error("Incorrect Password")
     }
 
-    return {user, password: undefined, salt: undefined}
+    // return {user, password: undefined, salt: undefined}
+    const token = createTokenForUser(user)
+    return token
 })
 
 // Create model

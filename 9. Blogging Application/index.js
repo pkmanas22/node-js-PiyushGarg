@@ -2,7 +2,11 @@
 const path = require('path');
 const express = require('express');
 const userRoute = require('./routes/user')
+const blogRoute = require('./routes/blog')
 const mongoose = require("mongoose")
+const cookieParser = require("cookie-parser");
+const { checkForAuthentication } = require('./middlewares/authentication');
+const Blog = require('./models/blog')
 
 // Creating an Express application
 const app = express();
@@ -21,13 +25,22 @@ app.use(express.json()); // JSON parsing middleware
 app.use(express.urlencoded({ extended: false })) // Form data parsing middleware
 
 // Define your routes and middleware here
+app.use(cookieParser())
+app.use(checkForAuthentication)
+
+app.use(express.static(path.resolve('./public')))
 
 // Rendering the 'home' template with URL data
 app.get('/', async (req, res) => {
-    return res.render('home');
+    const allBlogs = await Blog.find({})
+    return res.render('home', {
+        user: req.user,
+        blogs: allBlogs,
+    });
 });
 
 app.use('/user', userRoute)
+app.use('/blog', blogRoute)
 
 // Start the server
 app.listen(PORT, () => {
