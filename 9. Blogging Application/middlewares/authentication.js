@@ -1,21 +1,42 @@
-const { validateToken } = require("../services/authentication")
+// Import
+const { validateToken } = require("../services/authentication");
 
-function checkForAuthentication(req, res,next) {
-    const tokenCookie = req.cookies?.token;
-
-    req.user = null;
-
-    if(!tokenCookie) return next();
-
+// Middleware: Check Authentication
+async function checkForAuthentication(req, res, next) {
     try {
-        const user = validateToken(tokenCookie);
+        // Extract Token from Cookies
+        const tokenCookie = req.cookies?.token;
+
+        // Initialize User Property
+        req.user = null;
+
+        // No Token: Continue to Next Middleware or Route
+        if (!tokenCookie) return next();
+
+        // Validate Token
+        const user = await validateToken(tokenCookie);
+
+        // Set User Property on Successful Validation
         req.user = user;
+
+        // Continue to Next Middleware or Route
+        return next();
     } catch (error) {
-        next()
+        // Error during Token Validation
+        console.error("Error during token validation:", error);
+
+        // Optionally, render an error page or provide an error response to the client
+        return res.status(401).render('error', {
+            message: 'Unauthorized',
+            error: 'Authentication failed',
+        });
+
+        // If you prefer to send a JSON response:
+        // return res.status(401).json({ error: 'Authentication failed' });
     }
-    return next()
 }
 
+// Export Middleware
 module.exports = {
-    checkForAuthentication
-}
+    checkForAuthentication,
+};
