@@ -19,6 +19,8 @@ app.get('/', async (req, res) => {
     // fs.readFile("./sample.txt", (err, data) => {
     //     res.end(data)
     // })
+    
+    // Streaming the contents of 'sample.txt' to the response
     const stream = fs.createReadStream('./sample.txt', "utf-8")
     stream.on("data", (chunk) => {
         res.write(chunk)
