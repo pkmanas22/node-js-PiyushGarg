@@ -1,23 +1,13 @@
 ./2. Server/node_modules/
-./2. Server/package-lock.json
-./3. Building REST API's- project-01/node_modules
-./3. Building REST API's- project-01/package-lock.json
-./4. mongo db/node_modules
-./4. mongo db/package-lock.json
-./5. MVC Pattern/node_modules
-./5. MVC Pattern/package-lock.json
-./6. Custom URL/node_modules
-./6. Custom URL/package-lock.json
-./7. Discord Bot/node_modules
-./7. Discord Bot/package-lock.json
-./8. Uploading Files/node_modules
-./8. Uploading Files/package-lock.json
-./8. Uploading Files/uploads
-./8. Uploading Files/.uploads
-./9. Blogging Application/node_modules
-./9. Blogging Application/package-lock.json
-./9. Blogging Application/public/uploads
-./10.Chat Application - Real time Messaging/node_modules
-./10.Chat Application - Real time Messaging/package-lock.json
-./11. NodeJS Streams/node_modules
-11. NodeJS Streams/package-lock.json
+./3. Building REST API's- project-01/node_modules/
+./4. mongo db/node_modules/
+./5. MVC Pattern/node_modules/
+./6. Custom URL/node_modules/
+./7. Discord Bot/node_modules/
+./8. Uploading Files/node_modules/
+./8. Uploading Files/uploads/
+./8. Uploading Files/.uploads/
+./9. Blogging Application/node_modules/
+./9. Blogging Application/public/uploads/
+./10.Chat Application - Real time Messaging/node_modules/
+./11. NodeJS Streams/node_modules/
